@@ -31,14 +31,23 @@ This base was separated into 700 for training and 300 for testing. The binary mo
 
 ## Results
 
-**High Quality** \\
+**High Quality** \
 
 After estimating the Shapley values for each data point, new models were trained by iteratively removing the x% best data with the objective to observe what effect this would have on the precision, accuracy, loss function and recall of the neural network.
 
 ![Removendo%20dados%20de%20alta%20qualidade.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20alta%20qualidade.png)
 
+The effect that drew the most attention in this case was the progressive reduction of the 'recall' when the model was losing its high quality data. The rest looks like random variations.
 
-**Low Quality** \\
+### Comparing Results
+
+In the article, the main result was the reduction of accuracy with the removal of data of high quality, showing that the data with the high Shapley value were really the ones that most caused the prediction.
+
+![Removendo%20dados%20de%20alta%20qualidade%20artigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20alta%20qualidade%20artigo.png)
+
+
+**Low Quality** \
+
 When we remove the low quality data from the training base, we continue to observe the effect of Shapley values on recall, but now the correlation with precision becomes much more expressive. These correlations will be studied more deeply in the econometric results.
 
 ![Removendo%20dados%20de%20baixa%20qualidade.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20baixa%20qualidade.png)
@@ -50,5 +59,17 @@ The results of the article are much more expressive than the experiment carried 
 
 ![Removendo%20dados%20de%20baixa%20qualidade%20artigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20baixa%20qualidade%20artigo.png)
 
+## Discussions
 
+The researchers attributed this significant improvement in accuracy to the loss of data misclassified in its base. X-ray imaging data can often sometimes contain low definition and misclassification problems.
+
+In the case of the experiment carried out, we do not have this problem because the variations in the share prices are observed with almost absolute certainty, just check if the price was higher or lower after that pattern to get the correct rating. Therefore we probably did not observe a significant improvement in accuracy, but an improvement in precision/recall.
+
+To measure this, the researchers reassessed their database, using the opinion of three radiologists, and observed that indeed the data points with more extreme Shapley values mostly had some sorting problem.
+
+For the sole purpose of reproducing this experiment, I was asked to two colleagues with experience in the field of 'Day Trade' and graphic analysis to make an assessment of these extreme values found. The result was quite interesting:
+
+![resultado%20colega%201.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20colega%201.png)
+
+![resultado%20colega%202.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20colega%202.png)
 
