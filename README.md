@@ -17,6 +17,13 @@ $$
 \phi_i(v) = \sum_{S \subseteq N \textbackslash \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{i\}) - v(S))
 $$
 
+One way to interpret what is being explained in this formula is as follows:
+
+$$
+\scriptsize
+\varphi_{i}(v) = \frac{1}{número \space de \space agentes} \sum_{coalizões \space que \space excluem \space i} \frac{contribuição \space marginal \space de \space i \space para \space a \space coalizão}{número \space de \space coalizões \space que \space excluem \space i \space com \space esse \space tamanho}
+$$
+
 If we consider a neural network model as a cooperative game in which each training data point is responsible for a part of the model's effectiveness, we can measure the Shapley value for each data point as a metric of quality of this data.
 
 ## Dataset
@@ -73,3 +80,9 @@ For the sole purpose of reproducing this experiment, I was asked to two colleagu
 
 ![resultado%20colega%202.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20colega%202.png)
 
+The result becomes more interesting when we compare these results with the
+predictions from a person who had just discovered what candlestick charts were:
+
+![resultado%20leigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20leigo.png)
+
+The layman had better foresight than one of his colleagues with experience in the field. subject, and even better than some of the complex models of convolutional neural networks. This result raises hypotheses about the effectiveness of this type of investment strategy, however it is outside the scope of this presentation.
