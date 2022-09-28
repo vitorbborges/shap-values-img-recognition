@@ -13,8 +13,11 @@ The main objective is to assess whether a low quality database can compromise th
 
 Shapley's Value is contextualized in a cooperative game with $n$ agents in a coalition. The function $v: S \rightarrow \mathbb{R}$, assigns to the coalition $S$ a value that corresponds to the sum of the expected payoffs that the members of the coalition can obtain.
 
+
+The function $\varphi_{i}(v)$ returns a 'fair' proportion of distributing the coalition payoff according to the individual contribution of each agent. This function is defined as follows:
+
 $$
-\phi_i(v) = \sum_{S \subseteq N \textbackslash \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{i\}) - v(S))
+\varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
 $$
 
 One way to interpret what is being explained in this formula is as follows:
@@ -37,7 +40,7 @@ This base was separated into 700 for training and 300 for testing. The binary mo
 
 ## Results
 
-**High Quality** \
+**High Quality** 
 
 After estimating the Shapley values for each data point, new models were trained by iteratively removing the x% best data with the objective to observe what effect this would have on the precision, accuracy, loss function and recall of the neural network.
 
@@ -52,7 +55,7 @@ In the article, the main result was the reduction of accuracy with the removal o
 ![Removendo%20dados%20de%20alta%20qualidade%20artigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20alta%20qualidade%20artigo.png)
 
 
-**Low Quality** \
+**Low Quality** 
 
 When we remove the low quality data from the training base, we continue to observe the effect of Shapley values on recall, but now the correlation with precision becomes much more expressive. These correlations will be studied more deeply in the econometric results.
 
