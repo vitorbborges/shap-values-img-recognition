@@ -11,7 +11,7 @@ The main objective is to assess whether a low quality database can compromise th
 
 ## Game Theory
 
-Shapley's Value is contextualized in a cooperative game with $`n`$ agents in a coalition. The function $ v: S \rightarrow \mathbb{R} $, assigns to the coalition $ S $ a value that corresponds to the sum of the expected payoffs that the members of the coalition can obtain.
+Shapley's Value is contextualized in a cooperative game with $n$ agents in a coalition. The function $ v: S \rightarrow \mathbb{R} $, assigns to the coalition $ S $ a value that corresponds to the sum of the expected payoffs that the members of the coalition can obtain.
 
 $$
 \phi_i(v) = \sum_{S \subseteq N \textbackslash \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{i\}) - v(S))
