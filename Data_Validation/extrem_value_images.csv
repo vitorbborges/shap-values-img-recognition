@@ -1,0 +1,46 @@
+file_name,shap_value,class_name,marina,cont.se,sergio,cont.se,leigo,cont.se
+IR_daily_from_2017-06-05_to_2017-06-23.png,0.0055261,up,down,0,up,1,up,1
+CHRW_weekly_from_2015-02-06_to_2015-05-15.png,0.005058592,down,down,1,down,1,up,0
+CARR_60min_from_2021-04-13_to_2021-04-14.png,0.004237448,up,up,1,up,1,down,0
+NTRS_daily_from_2018-08-13_to_2018-08-31.png,0.004195636,down,up,0,down,1,up,0
+GD_weekly_from_2008-06-27_to_2008-10-03.png,0.00414497,down,down,1,down,1,down,1
+MGM_60min_from_2021-04-09_to_2021-04-12.png,0.004088765,up,down,0,down,0,up,1
+SO_monthly_from_2002-06-28_to_2003-08-29.png,0.004064057,up,up,1,down,0,up,1
+OSN_2015-06-09_2015-06-30.png,0.003916058,up,up,1,down,0,up,1
+CPRT_monthly_from_2013-09-30_to_2014-11-28.png,0.00385684,down,up,0,up,0,up,0
+EXR_weekly_from_2015-11-13_to_2016-02-19.png,0.00372294,up,down,0,down,0,up,1
+BR_60min_from_2021-03-01_to_2021-03-03.png,0.00361568,up,down,0,down,0,down,0
+NAII_2017-12-19_2018-01-11.png,0.003611091,up,down,0,down,0,up,1
+TIF_weekly_from_2019-05-31_to_2019-09-06.png,0.003566538,up,down,0,up,1,up,1
+EMR_weekly_from_2017-05-26_to_2017-09-01.png,0.003403579,up,up,1,down,0,down,0
+HUM_15min_from_2021-03-23_to_2021-03-23.png,0.003373328,up,down,0,down,0,down,0
+UNH_weekly_from_2012-07-06_to_2012-10-12.png,-0.004767205,down,up,0,up,0,up,0
+NDAQ_monthly_from_2015-02-27_to_2016-04-29.png,-0.004771288,up,up,1,down,0,down,0
+CTSH_weekly_from_2008-03-14_to_2008-06-20.png,-0.004977909,down,up,0,down,1,up,0
+CME_30min_from_2021-03-15_to_2021-03-16.png,-0.005133892,down,up,0,up,0,down,1
+STE_weekly_from_2005-11-25_to_2006-03-03.png,-0.005269851,down,up,0,down,1,up,0
+APTV_daily_from_2013-04-29_to_2013-05-17.png,-0.005486813,up,up,1,up,1,up,1
+ABC_weekly_from_2002-03-01_to_2002-06-07.png,-0.005588259,down,up,0,down,1,up,0
+NI_monthly_from_2009-12-31_to_2011-02-28.png,-0.005746418,up,up,1,up,1,up,1
+CRM_daily_from_2006-04-05_to_2006-04-26.png,-0.005980696,down,up,0,down,1,up,0
+LOW_60min_from_2021-02-23_to_2021-02-24.png,-0.00599801,down,up,0,down,1,up,0
+MCHP_30min_from_2021-03-30_to_2021-03-31.png,-0.006010826,up,up,1,up,1,down,0
+PFG_30min_from_2021-04-20_to_2021-04-21.png,-0.006087416,up,up,1,down,0,up,1
+HPQ_weekly_from_2005-11-25_to_2006-03-03.png,-0.006356024,down,up,0,down,1,up,0
+LRCX_60min_from_2021-03-29_to_2021-03-30.png,-0.006808309,up,up,1,up,1,up,1
+USB_15min_from_2021-03-19_to_2021-03-19.png,-0.007020946,down,down,1,up,0,down,1
+,,,,13,,16,,14
+Colega 1,15 maiores valores de Shapley,15 menores valores de Shapley,Total,,,,,
+Acertos,6,7,13,,,,,
+Erros,9,8,17,,,,,
+Proporção de Acertos,40%,46.667%,43.333%,,,,,
+,,,,,,,,
+Colega 2,15 maiores valores de Shapley,15 menores valores de Shapley,Total,,,,,
+Acertos,6,10,16,,,,,
+Erros,9,5,14,,,,,
+Proporção de Acertos,40%,66.667%,53.333%,,,,,
+,,,,,,,,
+Leigo,15 maiores valores de Shapley,15 menores valores de Shapley,Total,,,,,
+Acertos,8,6,14,,,,,
+Erros,7,9,16,,,,,
+Proporção de Acertos,53%,40.000%,46.667%,,,,,
