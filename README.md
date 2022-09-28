@@ -201,48 +201,43 @@ After estimating the shapley values, the images were classified and stored in an
 
 The results found were the following:
 
-
 ![Removendo%20dados%20de%20alta%20qualidade.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20alta%20qualidade.png)
 
-The effect that drew the most attention in this case was the progressive reduction of the 'recall' when the model was losing its high quality data. The rest looks like random variations.
+A visual analysis of the graphs suggests that the effect of removing the best data caused a significant reduction in model recall, this dependency relationship will be more delicately inferred in the Econometric Results section.
 
-### Comparing Results
-
-In the article, the main result was the reduction of accuracy with the removal of data of high quality, showing that the data with the high Shapley value were really the ones that most caused the prediction.
-
-![Removendo%20dados%20de%20alta%20qualidade%20artigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20alta%20qualidade%20artigo.png)
-
-
-**Low Quality** 
-
-When we remove the low quality data from the training base, we continue to observe the effect of Shapley values on recall, but now the correlation with precision becomes much more expressive. These correlations will be studied more deeply in the econometric results.
+We will repeat the experiment, but this time iteratively removing the worst values and measuring the effect of this on the same metrics.
 
 ![Removendo%20dados%20de%20baixa%20qualidade.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20baixa%20qualidade.png)
 
-### Comparing Results
+Again a shallower analysis of the graphs suggests a causal relationship between the removal of bad data and the increase in measures of accuracy and Recall. This time the Precision increase ratio is much more expressive.
 
-The results of the article are much more expressive than the experiment carried out by me, in the case of removing 'bad' values the researchers managed to raise the model accuracy up to more than 70%.
+The scientific article in question manages to obtain a causal relationship between the values and the accuracy of the model, reaching an efficiency of 70% at best. This is because the low-shapley medical data, which probably had classification problems, were removed from the training base and the network was able to learn only the true features of the well-classified images.
 
+Under that assumption, the researchers asked three radiologists to re-rank the 100 worst and best according to Shapley. After performing a chi-square test, they inferred that the distribution of images with misclassifications in the 100 worst was much higher than in the 100 best.
 
-![Removendo%20dados%20de%20baixa%20qualidade%20artigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20baixa%20qualidade%20artigo.png)
+A characteristic of the data that were used in the empirical exercise is the absence of classification errors, since the only requirement for correct classification is the verification of the price in one of the following periods. The experiment of requesting specialists to reclassify the extreme values of Shapley was carried out for the sole purpose of reproducing the article.
 
-## Discussions
+The results were as follows:
 
-The researchers attributed this significant improvement in accuracy to the loss of data misclassified in its base. X-ray imaging data can often sometimes contain low definition and misclassification problems.
-
-In the case of the experiment carried out, we do not have this problem because the variations in the share prices are observed with almost absolute certainty, just check if the price was higher or lower after that pattern to get the correct rating. Therefore we probably did not observe a significant improvement in accuracy, but an improvement in precision/recall.
-
-To measure this, the researchers reassessed their database, using the opinion of three radiologists, and observed that indeed the data points with more extreme Shapley values mostly had some sorting problem.
-
-For the sole purpose of reproducing this experiment, I was asked to two colleagues with experience in the field of 'Day Trade' and graphic analysis to make an assessment of these extreme values found. The result was quite interesting:
+Two colleagues with experience in graphical analysis and day-trading reclassified the most extreme images and the following accuracy was obtained:
 
 ![resultado%20colega%201.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20colega%201.png)
 
 ![resultado%20colega%202.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20colega%202.png)
 
-The result becomes more interesting when we compare these results with the
-predictions from a person who had just discovered what candlestick charts were:
+A third reclassification was performed, but this time by a layman, who had never seen a candlestick chart, the results:
 
 ![resultado%20leigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20leigo.png)
 
-The layman had better foresight than one of his colleagues with experience in the field. subject, and even better than some of the complex models of convolutional neural networks. This result raises hypotheses about the effectiveness of this type of investment strategy, however it is outside the scope of this presentation.
+It is interesting to note that experts, on average, did not obtain sufficient accuracies for a sustainable investment strategy. The layperson had better accuracy than one of the experts, and better accuracy than many of the complex and costly trained models. This conclusion raises considerations about the efficiency of graphical analysis as an investment strategy, but this discussion is outside the scope of this experiment.
+
+## Econometric Results
+
+In this section we will infer that the removal of Shapley's extreme values did affect the model's metrics. We will look at the p-value of the hypothesis of correlation in the regression between the x% of data removed and the metric value, the R-squared of this regression and Pearson's correlation coefficient.
+
+![Resultado%20regress%C3%B5es.png]([https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20leigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Resultado%20regress%C3%B5es.png))
+
+Note that the precision of the regression on when we removed the low quality data, obtained not only a p-value of 0 but also a Pearon coefficient and R-squared with a very high modulus. The regression recall of when we removed the best data also gave very good results.
+
+The other regressions may even have indicated the existence of a correlation between the effects, but their R-squared and correlation module were not so expressive. Therefore, it is safer to assume that the values found are pure randomness in the drawing of samples, and that the Shapley values did not influence them.
+
