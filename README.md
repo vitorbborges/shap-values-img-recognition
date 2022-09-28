@@ -41,7 +41,7 @@ The experiments were performed in the Python 3 programming language. The trained
 
 The architecture of all trained models is the same, their layers will be explained in the following code:
 
-```
+```python
 
     ########## RNC
     from keras.models import Sequential
