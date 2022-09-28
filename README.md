@@ -98,11 +98,109 @@ The architecture of all trained models is the same, their layers will be explain
 
 ```
 
-## Results
+The training base of the main model contains 700 images, and the test base 300. The bases were reduced due to the computational complexity of estimating the shapley value, which, as explained in the formula, is a few orders above the factorial complexity. The program ran for several hours.
 
-**High Quality** 
+The code that calculates the shaley value for each of the training images is as follows:
 
-After estimating the Shapley values for each data point, new models were trained by iteratively removing the x% best data with the objective to observe what effect this would have on the precision, accuracy, loss function and recall of the neural network.
+```python
+
+    import os
+    import numpy as np
+    import pandas as pd
+    import cv2
+    import shap
+    import random
+    import time
+    from IPython.display import clear_output
+    
+    def create_train_dataset():
+    
+    img_width = 300
+    img_height = 300
+    
+    img_data_array = []
+    class_name = []
+    file_name = []
+    
+    for class_ in os.listdir('Train/'):
+        
+        for file in os.listdir(os.path.join('Train/', class_)):
+            
+            image_path = os.path.join('Train/', class_,  file)
+            image = cv2.imread( image_path, cv2.COLOR_BGR2RGB)
+            image = cv2.resize(image, (img_height, img_width),interpolation = cv2.INTER_AREA)
+            image = np.array(image)
+            image = image.astype('float32')
+            image /= 255 
+            img_data_array.append(image)
+            class_name.append(class_)
+            file_name.append(file)
+            
+            
+    return file_name, img_data_array, class_name
+
+    def create_test_dataset():
+    
+    img_width = 300
+    img_height = 300
+    
+    img_data_array = []
+    class_name = []
+    file_name = []
+    
+    for class_ in os.listdir('Test/'):
+        
+        for file in os.listdir(os.path.join('Test/', class_)):
+            
+            image_path = os.path.join('Test/', class_,  file)
+            image = cv2.imread( image_path, cv2.COLOR_BGR2RGB)
+            image = cv2.resize(image, (img_height, img_width),interpolation = cv2.INTER_AREA)
+            image = np.array(image)
+            image = image.astype('float32')
+            image /= 255 
+            img_data_array.append(image)
+            class_name.append(class_)
+            file_name.append(file)
+            
+            
+    return file_name, img_data_array, class_name
+
+    ifile_name, iimg_data, iclass_name = create_train_dataset()
+    tfile_name, timg_data, tclass_name = create_test_dataset()
+    
+    icontent = dict(zip(ifile_name,iimg_data))
+    tcontent = dict(zip(tfile_name,timg_data))
+    iclasses = dict(zip(ifile_name,iclass_name))
+    tclasses = dict(zip(tfile_name,tclass_name))
+    
+    iimg_data = np.array(iimg_data)
+    timg_data = np.array(timg_data)
+    
+    start_time = time.time()
+    
+    explainer = shap.DeepExplainer(loaded_model, np.array(timg_data)[0:64])
+        
+    shapley_values = open('shapley_values.csv', 'a')
+    
+    for i in range(len(pd.read_csv('shapley_values.csv')['file_name']),700):
+        
+        clear_output(wait = True)
+        
+        img = iimg_data[i:i+1]
+        shap_values = explainer.shap_values(img)
+        
+        shapley_values.write(f'{ifile_name[i]},{sum(sum(sum(shap_values[0][0])))},{iclass_name[i]}\n')
+        
+        print(f'{i/700:.3f}%')
+        
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+```
+
+After estimating the shapley values, the images were classified and stored in an orderly manner from the best to the worst contribution to effectiveness. The experiment iteratively removes the x% best data, and retrains the network to measure the effects of this on the measures of: Accuracy, Precision, Recall and Loss Function.
+
+The results found were the following:
+
 
 ![Removendo%20dados%20de%20alta%20qualidade.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20alta%20qualidade.png)
 
