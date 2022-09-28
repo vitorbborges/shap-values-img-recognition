@@ -11,7 +11,7 @@ The main objective is to assess whether a low quality database can compromise th
 
 ## Game Theory
 
-Shapley value is a game theory concept that measures the contribution individual agent for the 'payoff' of a cooperative game. The formal definition of this estimator is as follows:
+Shapley's Value is contextualized in a cooperative game with \( n \) agents in a coalition. The function \( v: S \rightarrow \mathbb{R} \), assigns to the coalition \( S \) a value that corresponds to the sum of the expected payoffs that the members of the coalition can obtain.
 
 $$
 \phi_i(v) = \sum_{S \subseteq N \textbackslash \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{i\}) - v(S))
