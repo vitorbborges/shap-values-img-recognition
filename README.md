@@ -23,4 +23,4 @@ If we consider a neural network model as a cooperative game in which each traini
 
 The empirical exercise was the training of a convolutional neural network for the forecast of stock price movement based on the candlestick pattern of the previous periods, and subsequent estimation of their Shapley values. An example sample data:
 
-![alt text](http://url/to/img.png)
+![alt text](https://github.com/vitorbborges/shap-values-img-recognoition/blob/main/Test/up/AAL_weekly_from_2008-12-05_to_2009-03-13.png)
