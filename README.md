@@ -4,10 +4,17 @@ This repository is the final presentation for the subject Numerical Methods and 
 
 It is replicates the methodology used in the paper [Data valuation for medical imaging using Shapley value and application to a large-scale chest X-ray dataset](https://www.semanticscholar.org/paper/Data-valuation-for-medical-imaging-using-Shapley-to-Tang-Ghorbani/8a4a77347f274b58325ef6c5575611b589d4ba6c) trying to evaluate the amount of predictbility that a single data point contributes to the power of a Deep Learning Model.
 
-## References and Motivation
+The article in question explores a method of quantifying the quality of each data point of the training base of a convolutional neural network (CNN). The neural network trained in the article uses X-ray images of the lung to diagnose pneumonia.
 
-The article by Siyi Tang, Amirata Ghorbani, Rikiya Yamashita, Sameer Rehman, Jared A. Dunnmon, James Zou & Daniel L. Rubin use the Shapley value from Game Theory to rank the training data of a convolutional neural network according to its importance. 
-The main objective is to assess whether a low quality database can compromise the accuracy of the model. The article used X-ray images of the lung to predict pneumonia.
+Images of a section of the Candlesticks chart, from different time scales, were used for S&P500 assets. The purpose of the network is to classify these images according to the price variation 5 periods after the observed pattern, the classes are 'buy' and 'sell'. The main objective is to assess whether a low quality database can compromise the accuracy of the model.
+
+An example of sample data:
+
+![AAL_weekly_from_2008-12-05_to_2009-03-13](https://github.com/vitorbborges/shap-values-img-recognoition/blob/main/Test/up/AAL_weekly_from_2008-12-05_to_2009-03-13.png)
+
+The image above corresponds to the price variation per share of 'American Airlines' between the dates of 2008-12-05 and 2009-03-13, each candle corresponds to the price variation in one of the weeks of the period.
+
+One of the main features of the X-ray database used in the article is the misclassification of data points according to the actual diagnosis of the image. According to the researchers, this can compromise the accuracy of the model, and in sequence a method of ordering the training data of the network is proposed, according to the individual contribution of that data to the joint accuracy.
 
 ## Game Theory
 
@@ -28,15 +35,68 @@ $$
 
 If we consider a neural network model as a cooperative game in which each training data point is responsible for a part of the model's effectiveness, we can measure the Shapley value for each data point as a metric of quality of this data.
 
-## Dataset
+## Empirical Exercise
 
-The empirical exercise was the training of a convolutional neural network for the forecast of stock price movement based on the candlestick pattern of the previous periods, and subsequent estimation of their Shapley values. An example of sample data:
+The experiments were performed in the Python 3 programming language. The trained neural network models were imported from the tensorflow keras library and the shapley values were estimated with the shap library.
 
-![AAL_weekly_from_2008-12-05_to_2009-03-13](https://github.com/vitorbborges/shap-values-img-recognoition/blob/main/Test/up/AAL_weekly_from_2008-12-05_to_2009-03-13.png)
+The architecture of all trained models is the same, their layers will be explained in the following code:
 
-The programming language used was Python 3. A total of 1000 images using the library 'mpl_finance.candlestick2_ohlc' to draw the charts and 'alpha_vantage.timeseries' for price changes. If the share price rose after observing that pattern of 'candles' the image was classified as 'up', and if the opposite happened, as 'down'.
+```
 
-This base was separated into 700 for training and 300 for testing. The binary model was trained using the 'keras' package from 'TensorFlow', and Shapley values for the data of training were calculated with the 'shap' library.
+    ########## RNC
+    from keras.models import Sequential
+    from keras.layers import Conv2D, MaxPooling2D
+    from keras.layers import Activation, Dropout, Flatten, Dense
+    from keras.preprocessing.image import ImageDataGenerator
+    import tensorflow as tf 
+    
+    model = Sequential()
+    model.add(Conv2D(32, (3, 3), input_shape=(300, 300, 3)))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2), padding = 'same'))
+    model.add(Conv2D(64, (3, 3)))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Conv2D(128, (3, 3)))
+    model.add(Activation('relu'))
+    model.add(MaxPooling2D(pool_size=(2, 2)))
+    model.add(Flatten())
+    model.add(Dense(64))
+    model.add(Activation('relu'))
+    model.add(Dropout(0.5))
+    model.add(Dense(1))
+    model.add(Activation('sigmoid'))
+    model.compile(loss = 'binary_crossentropy',
+                  optimizer = 'Adamax',
+                  metrics = ['accuracy',tf.keras.metrics.Precision(), tf.keras.metrics.Recall()])
+    batch_size = 1
+    train_datagen = ImageDataGenerator(rescale = 1./255, 
+                                       shear_range = 0.2,
+                                       zoom_range = 0.2,
+                                       horizontal_flip = True)
+    # Testing Augmentation - Only Rescaling
+    test_datagen = ImageDataGenerator(rescale = 1./255)
+    # Generates batches of Augmented Image data
+    train_generator = train_datagen.flow_from_directory('Train/', target_size = (300, 300), 
+                                                        batch_size = batch_size,
+                                                        class_mode = 'binary') 
+    # Generator for validation data
+    validation_generator = test_datagen.flow_from_directory('Test/', 
+                                                            target_size = (300, 300),
+                                                            batch_size = batch_size,
+                                                            class_mode = 'binary')
+    # Fit the model on Training data
+    model.fit_generator(train_generator,
+                        epochs = 5,
+                        validation_data = validation_generator,
+                        verbose = 1)
+    # Evaluating model performance on Testing data
+    loss, accuracy, precision, recall = model.evaluate(validation_generator)
+    print("\nModel's Evaluation Metrics: ")
+    print("---------------------------")
+    print("Accuracy: {} \nLoss: {} \nPrecision: {} \nRecall: {}".format(accuracy, loss, precision, recall))
+
+```
 
 ## Results
 
