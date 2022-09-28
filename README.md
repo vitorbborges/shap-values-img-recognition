@@ -33,4 +33,4 @@ This base was separated into 700 for training and 300 for testing. The binary mo
 
 When we remove the low quality data from the training base, we continue to observe the effect of Shapley values on recall, but now the correlation with precision becomes much more expressive. These correlations will be studied more deeply in the econometric results.
 
-![Removendo%20dados%20de%20baixa%20qualidade.png]([https://github.com/vitorbborges/shap-values-img-recognoition/blob/main/Test/up/AAL_weekly_from_2008-12-05_to_2009-03-13.png](https://github.com/vitorbborges/shap-values-img-recognoition/blob/main/Graphs%20and%20Tables/Removendo%20dados%20de%20baixa%20qualidade.png))
+![Removendo%20dados%20de%20baixa%20qualidade.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Removendo%20dados%20de%20baixa%20qualidade.png)
