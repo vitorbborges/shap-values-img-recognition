@@ -235,7 +235,7 @@ It is interesting to note that experts, on average, did not obtain sufficient ac
 
 In this section we will infer that the removal of Shapley's extreme values did affect the model's metrics. We will look at the p-value of the hypothesis of correlation in the regression between the x% of data removed and the metric value, the R-squared of this regression and Pearson's correlation coefficient.
 
-![Resultado%20regress%C3%B5es.png]([https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/resultado%20leigo.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Resultado%20regress%C3%B5es.png))
+![Resultado%20regress%C3%B5es.png](https://github.com/vitorbborges/shap-values-img-recognoition/raw/main/Graphs%20and%20Tables/Resultado%20regress%C3%B5es.png)
 
 Note that the precision of the regression on when we removed the low quality data, obtained not only a p-value of 0 but also a Pearon coefficient and R-squared with a very high modulus. The regression recall of when we removed the best data also gave very good results.
 
