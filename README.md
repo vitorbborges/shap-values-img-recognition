@@ -20,8 +20,7 @@ $$
 One way to interpret what is being explained in this formula is as follows:
 
 $$
-\scriptsize
-\varphi_{i}(v) = \frac{1}{número \space de \space agentes} \sum_{coalizões \space que \space excluem \space i} \frac{contribuição \space marginal \space de \space i \space para \space a \space coalizão}{número \space de \space coalizões \space que \space excluem \space i \space com \space esse \space tamanho}
+\varphi_{i}(v) = \frac{1}{number \space of \space agents} \sum_{coalition \space that \space excludes \space i} \frac{marginal \space contribution \space of \space i \space for \space this \space coalition}{number \space of \space coalitions \space that \space exclude \space i \space with \space this \space size}
 $$
 
 If we consider a neural network model as a cooperative game in which each training data point is responsible for a part of the model's effectiveness, we can measure the Shapley value for each data point as a metric of quality of this data.
