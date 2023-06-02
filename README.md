@@ -21,26 +21,9 @@ One of the main features of the X-ray database used in the article is the miscla
 Shapley's Value is contextualized in a cooperative game with $n$ agents in a coalition. The function $v: S \rightarrow \mathbb{R}$, assigns to the coalition $S$ a value that corresponds to the sum of the expected payoffs that the members of the coalition can obtain.
 
 
-The function $`\varphi_{i}(v)`$ returns a 'fair' proportion of distributing the coalition payoff according to the individual contribution of each agent. This function is defined as follows:
-
-\[
-\varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
-\]
-
-![formula](https://render.githubusercontent.com/render/math?math=\varphi_{i}(v)=\sum_{S\subseteqN/\{i\}}\frac{|S|!(n-|S|-1)!}{n!}(v(S\cup\{i\})-v(S)))
-
-```math
-\varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
-```
-
-$$ \varphi_{i}(v) = \sum_{{S \subseteq N / \{i\}}} \frac{{|S|!(n - |S| - 1)!}}{{n!}} (v(S \cup \{ i \}) - v(S)) $$
-
+The function $\varphi_{i}(v)$ returns a 'fair' proportion of distributing the coalition payoff according to the individual contribution of each agent. This function is defined as follows:
 
 $$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
-
-![equation](5Csum_%7BS%20%5Csubseteq%20N%20/%20%5C%7Bi%5C%7D%7D%20%5Cfrac%7B%7CS%7C!(n%20-%20%7CS%7C%20-%201)!%7D%7Bn!%7D%20(v(S%20%5Ccup%20%5C%7B%20i%20%5C%7D)%20-%20v(S)))
-
-
 
 One way to interpret what is being explained in this formula is as follows:
 
