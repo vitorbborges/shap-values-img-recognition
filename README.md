@@ -21,7 +21,7 @@ One of the main features of the X-ray database used in the article is the miscla
 Shapley's Value is contextualized in a cooperative game with $n$ agents in a coalition. The function $v: S \rightarrow \mathbb{R}$, assigns to the coalition $S$ a value that corresponds to the sum of the expected payoffs that the members of the coalition can obtain.
 
 
-The function $\varphi_{i}(v)$ returns a 'fair' proportion of distributing the coalition payoff according to the individual contribution of each agent. This function is defined as follows:
+The function $`\varphi_{i}(v)`$ returns a 'fair' proportion of distributing the coalition payoff according to the individual contribution of each agent. This function is defined as follows:
 
 \[
 \varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
