@@ -1,5 +1,3 @@
-\usepackage{amsmath}
-
 # shap-values-img-recognoition
 
 This repository is the final presentation for the subject Numerical Methods and Computational Models in the post-graduation department of Economics at the University of Brasília.
