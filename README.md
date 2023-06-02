@@ -33,6 +33,9 @@ The function $\varphi_{i}(v)$ returns a 'fair' proportion of distributing the co
 
 $$ \varphi_{i}(v) = \sum_{{S \subseteq N / \{i\}}} \frac{{|S|!(n - |S| - 1)!}}{{n!}} (v(S \cup \{ i \}) - v(S)) $$
 
+
+$$\left( \sum_{k=1}^n a_k b_k \right)^2 \leq \left( \sum_{k=1}^n a_k^2 \right) \left( \sum_{k=1}^n b_k^2 \right)$$
+
 ![equation](5Csum_%7BS%20%5Csubseteq%20N%20/%20%5C%7Bi%5C%7D%7D%20%5Cfrac%7B%7CS%7C!(n%20-%20%7CS%7C%20-%201)!%7D%7Bn!%7D%20(v(S%20%5Ccup%20%5C%7B%20i%20%5C%7D)%20-%20v(S)))
 
 
