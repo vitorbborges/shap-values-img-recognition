@@ -31,6 +31,11 @@ The function $\varphi_{i}(v)$ returns a 'fair' proportion of distributing the co
 \varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
 \]
 
+$$
+\varphi_{i}(v) = \sum_{{S \subseteq N / \{i\}}} \frac{{|S|!(n - |S| - 1)!}}{{n!}} (v(S \cup \{ i \}) - v(S))
+$$
+
+
 One way to interpret what is being explained in this formula is as follows:
 
 $$
