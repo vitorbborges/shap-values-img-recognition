@@ -27,7 +27,7 @@ The function $`\varphi_{i}(v)`$ returns a 'fair' proportion of distributing the 
 \varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
 \]
 
-![formula](https://render.githubusercontent.com/render/math?math=\varphi_{i}(v)=\sum_{S \subseteqN/\{i\}}\frac{|S|!(n-|S|-1)!}{n!}(v(S\cup\{i\})-v(S)))
+![formula](https://render.githubusercontent.com/render/math?math=\varphi_{i}(v)=\sum_{S\subseteqN/\{i\}}\frac{|S|!(n-|S|-1)!}{n!}(v(S\cup\{i\})-v(S)))
 
 ```math
 \varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
