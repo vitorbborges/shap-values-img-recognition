@@ -23,9 +23,9 @@ Shapley's Value is contextualized in a cooperative game with $n$ agents in a coa
 
 The function $\varphi_{i}(v)$ returns a 'fair' proportion of distributing the coalition payoff according to the individual contribution of each agent. This function is defined as follows:
 
-$$
+\begin{align}
 \varphi_{i}(v) = \sum_{S \subseteq N / \{i\}} \frac{|S|!(n - |S| - 1)!}{n!} (v(S \cup \{ i \}) - v(S))
-$$
+\end{align}
 
 One way to interpret what is being explained in this formula is as follows:
 
